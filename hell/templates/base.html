@@ -1,92 +1,120 @@
-{% load article_tags %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-  <head>
-    <title>{% block title %}{% endblock %}</title>
+{% load catalog_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>{% block title %}{% endblock %}</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="/media/css/style.css" />
-    <script src="/media/js/jquery-1.6.2.min.js" type="text/javascript" ></script>
-    <script src="/media/js/blog.js" type="text/javascript" ></script>
-
-  </head>
-
-  <body class="home">
-<div >
-<a href="/">Home</a>
-</div>
-<div>
-{% block categorymenu %}
-    {% left_menu %}
-{% endblock %}
-</div>
-
-  {% block content %}
-  {% endblock content %}
-</body>
-</html>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>{% block title %}{% endblock %}</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% block styles %}{% endblock %}
+    {% block scripts %}{% endblock %}
 
 <style>
 body {
-text-shadow:#cdf 0px 1px 0px;
+    text-shadow:#cdf 0px 1px 0px;
+    text-align:justify;
+}
+#head p{
+    clear:both;
+    letter-spacing:-3pt;
+    text-transform: uppercase;
+    text-shadow: #0F0 0px 0px 10px;
+    font-family:serif;
+    font-weight:700;
+    font-size:40px;
+    color:#222;
+    margin:auto;
+    height:60px;
+    /*border-top-right-radius: 3px;*/
 }
 #main {
-width:800px;
-margin:auto;
-background-color:#acF;
-/*background-color:rgb(178, 223, 245);*/
+    width:1000px;
+    margin:auto;
+    background-color:#acF;
+    /*background-color:rgb(178, 223, 245);*/
 }
-#head {
-letter-spacing:-3pt;
-text-transform: uppercase;
-text-shadow: #0F0 0px 0px 10px;
-font-family:serif;
-font-weight:700;
-font-size:40px;
-color:#fff;
-/*border-top-right-radius: 3px;*/
+#navigation {
+    width:200px;
+    margin:auto;
+    float:left;
 }
-a {
-color:#F00;
-background-color:#AAA;
-border-top-right-radius: 3px;
-border-top-left-radius: 3px;
-border-bottom-right-radius: 3px;
-border-bottom-left-radius: 3px;
-box-shadow:#cdf 0px 0px 10px;
+#topmenu .item {
+    display:inline;
+    /*float:left;*/
+    width:50px;
+    margin:10px;
+    color:#F00;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    /*border:1px solid #666;*/
+    text-shadow:none;
+    box-shadow:#cdf 0px 0px 10px;
+    background-color:#AF0;
+    border:1px solid #555;
 }
-#head p#mudak {
-color:#0F0;
+#topmenu .item .selected {
+    background-color:#CCC;
+    border:1px solid #666;
 }
-</style>
-</head>
-<body>
-<div id="main">
-<div id="head">
-Wuk-Last v.1.2 Limited Edition.
-</div>
-<div id="base">
-Lorem ipsum dolor sit amet, consectetur <a href="#">adipiscing</a> elit. Nullam molestie venenatis lorem, eget volutpat est ullamcorper eu. Mauris faucibus, lectus eu aliquet suscipit, quam lectus eleifend nibh, quis posuere quam elit ac nisi. Morbi at accumsan erat. Nunc ac arcu vel eros porta tempus eu ut massa. Duis nec feugiat nunc. Nam pharetra pretium tortor, vitae fermentum est ultricies placerat. Nulla nec nibh ante, ut porttitor neque. Ut vitae ante massa, vel mattis risus. Etiam congue lacus eget neque feugiat molestie.
+#base {
+    width:600px;
+    float:left;
+}
+#base a {
+    color:#F00;
+    background-color:#AAA;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border:1px solid #999;
+    text-shadow:none;
+    box-shadow:#cdf 0px 0px 10px;
+}
+.error {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #AF0;
+    color:#F00;
+}
+.success {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #AF0;
+    color: #00F;
+}
 
-Curabitur eu magna a lorem lacinia pellentesque. Phasellus volutpat, lectus pellentesque faucibus iaculis, diam augue faucibus mauris, nec malesuada purus arcu nec sapien. Phasellus blandit consectetur quam, eu lobortis enim cursus sed. Aliquam sed odio nec est auctor sodales ac ac arcu. Quisque auctor arcu fringilla ligula mollis sed placerat turpis iaculis. Suspendisse quis tellus ut sapien rutrum aliquet. Mauris ipsum dolor, adipiscing eget facilisis et, convallis vitae lorem.
-
-Fusce ac pellentesque felis. Nullam vel orci enim. Vivamus eget enim nisi. Pellentesque laoreet, magna id bibendum ultrices, ligula diam convallis dolor, a mattis urna dui eu metus. Suspendisse nec erat in sem blandit egestas. In quis nisl massa, sit amet faucibus nulla. Morbi vitae quam dolor, ut ornare metus. Nullam ac sapien tellus, et egestas eros.
-
-Nunc mollis, arcu eu rutrum pharetra, nunc augue lobortis ante, a euismod arcu nisi et dui. Donec nibh velit, tempor sed hendrerit a, auctor luctus mi. Suspendisse odio nibh, pulvinar quis congue id, volutpat eu augue. Suspendisse potenti. Phasellus velit diam, eleifend sed lacinia non, consequat id diam. Quisque facilisis gravida ante, fermentum cursus neque pulvinar sed. In facilisis euismod erat, nec mattis nisl volutpat ut. Curabitur pellentesque mauris erat, at tincidunt lectus. Mauris in ipsum leo, sit amet cursus nunc. Pellentesque erat sapien, imperdiet et mattis a, mattis nec risus. Integer in nisl metus. Aenean at tellus vel diam feugiat tincidunt.
-
-Fusce sit amet nulla a lacus fermentum auctor fringilla vitae lacus. Integer non turpis eget libero tempor viverra sed vel nibh. Aliquam aliquam feugiat nulla ac pretium. Maecenas volutpat ante sed ligula faucibus auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas rhoncus magna ac lectus condimentum congue. Mauris est augue, cursus non pulvinar ac, auctor eu elit. Vestibulum et nibh diam, quis molestie justo. Quisque volutpat ultricies ipsum id aliquam.
-</div>
-<div id="footer"></div>
-</div>
+        </style>
+    </head>
+    <body>
+    <div id="main">
+        <div id="head">
+            <p><a href="#">Title</a></p>
+            <h2>Baseline</h2>
+            <div id="topmenu">
+                <div class="item"><a href="#" class="selected">item</a></div>
+                <div class="item"><a href="#">item</a></div>
+                <div class="item"><a href="#">item</a></div>
+            </div>
+        </div>
+        <div id="navigation">
+            {% block categorymenu %}
+                {% left_menu %}
+            {% endblock %}
+        </div>
+        <div id="base">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <div id="footer">
+            {% block footer %}2012&nbsp;(c)InfinitylX{% endblock %}
+        </div>
+    </div>
 </body>
 </html>

@@ -11,6 +11,11 @@ class Category(models.Model):
     creating_date = models.DateTimeField('date published')
     modifying_date = models.DateTimeField('date modifyed')
     sub_categoryes = models.ManyToManyField("self", blank=True, null=True)
+    visible = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
+
+    def delete(self):
+        self.deleted = True
 
     def __unicode__(self):
         return self.name
@@ -29,6 +34,11 @@ class Page(models.Model):
     attachment = models.ManyToManyField(Attachment, blank=True, null=True)
     creating_date = models.DateTimeField('date published')
     modifying_date = models.DateTimeField('date modifyed')
+    visible = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
+
+    def delete(self):
+        self.deleted = True
 
     def __unicode__(self):
         return self.name
