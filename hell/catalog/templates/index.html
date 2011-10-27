@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %} {{ page.meta_title }} {% endblock title %}
+{% block keywords %}{{ page.meta_keywords }}{% endblock keywords %}
+{% block description %}{{ page.meta_description }}{% endblock description %}
+
+{% block content %}
+hi there
+{{ con|unordered_list }}
+{% endblock content %}

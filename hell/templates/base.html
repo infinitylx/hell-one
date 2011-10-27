@@ -3,8 +3,8 @@
 <html>
     <head>
        <title>{% block title %}{% endblock %}</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
+    <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% block styles %}{% endblock %}
     {% block scripts %}{% endblock %}
@@ -48,7 +48,6 @@ body {
     border-top-left-radius: 3px;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    /*border:1px solid #666;*/
     text-shadow:none;
     box-shadow:#cdf 0px 0px 10px;
     background-color:#AF0;
@@ -105,7 +104,9 @@ body {
         </div>
         <div id="navigation">
             {% block categorymenu %}
-                {% left_menu %}
+                {% left_menu %}<br />
+                ==============<br />
+                {% left_menu "2"%}
             {% endblock %}
         </div>
         <div id="base">

@@ -1,0 +1,10 @@
+{% comment %}
+{% for category in categories %}
+    {% if category.slug == current_category %}
+        <b>{{category.title}}</b><br />
+    {% else %}
+        <a href="{% url article.views.category_detail category.slug %}">{{category.title}}</a><br />
+    {% endif %}
+{% endfor %}
+{% endcomment %}
+{{ categories|unordered_list }}
