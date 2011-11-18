@@ -4,7 +4,7 @@
     {% recursetree nodess.get_children %}
         <li {% get_class node nodess %}>
             <a href="#">{{ node.name }}</a>
-            {% if node in path %}
+            {% if node in nodess %}
                 <ul class="children">
                     <a href="#">{{ children }}</a>
                 </ul>
