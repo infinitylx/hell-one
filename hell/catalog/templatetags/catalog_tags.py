@@ -16,8 +16,11 @@ def left_menu(current_category=7):
     cats = Catalog.objects.all()
     par = Catalog.objects.get(id=current_category)
     ipars = drilldown_tree_for_node(par)
+    path = []
+    for p in ipars:
+        path.append(p)
 
-    return {'nodess':cats, 'par':par, 'pars':ipars}
+    return {'nodess':path, 'par':par, 'pars':ipars}
 
     # Todo:
     # 0 get given object
