@@ -1,10 +1,10 @@
 {% load mptt_tags %}
 
 <ul class="root">
-    {% recursetree nodess %}
-        <li>
+    {% recursetree nodess.get_children %}
+        <li {% get_class node nodess %}>
             <a href="#">{{ node.name }}</a>
-            {% if not node.is_leaf_node %}
+            {% if node in path %}
                 <ul class="children">
                     <a href="#">{{ children }}</a>
                 </ul>
