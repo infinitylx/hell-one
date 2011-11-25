@@ -13,11 +13,17 @@ register = template.Library()
 @register.inclusion_tag('left-menu.html')
 def left_menu(current_category=7):
     print "E V R I K A !"
-    cats = Catalog.objects.all()
-    par = Catalog.objects.get(id=current_category)
-    ipars = drilldown_tree_for_node(par)
+    #cats = Catalog.objects.all()
+    g = Catalog.objects.get(id=current_category)
+    ipath = drilldown_tree_for_node(par)
+    path = []
+    others = {}
 
-    return {'nodess':cats, 'par':par, 'pars':ipars}
+    for p in ipars:
+        path.append(p)
+        others[p] = p.get_children()
+
+    return {'node':g, 'path':path, 'others':others}
 
     # Todo:
     # 0 get given object

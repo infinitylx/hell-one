@@ -1,21 +1,4 @@
 {% load mptt_tags %}
+{% load get_val_dict_tags %}
 
-<ul class="root">
-    {% recursetree nodess %}
-        <li>
-            <a href="#">{{ node.name }}</a>
-            {% if not node.is_leaf_node %}
-                <ul class="children">
-                    <a href="#">{{ children }}</a>
-                </ul>
-            {% endif %}
-        </li>
-    {% endrecursetree %}
-</ul>
-
-{% drilldown_tree_for_node par as drilldown %}
-{% for node,structure in drilldown|tree_info %}
-    {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}
-        <a href="#">{{ node.name }}</a>
-    {% for level in structure.closed_levels %}</li></ul>{% endfor %}
-{% endfor %}
+{% include %}
