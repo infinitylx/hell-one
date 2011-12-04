@@ -29,10 +29,10 @@ class Category(MPTTModel):
     def __unicode__(self):
         return self.name
 
-    @models.permalink
+    #@models.permalink
     def get_absolute_url(self):
         """Construct the absolute URL for this Item."""
-        return reverse('hell.catalog.views.view_catalog', [str(self.id)])
+        return reverse("hell.catalog.views.view_catalog", args=['odin'])
 
     def save(self, *args, **kwargs):
 

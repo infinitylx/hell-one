@@ -4,9 +4,8 @@
 <ul>
 {% for p in others %}
 {% if p.1 == 0 %}</ul>{% endif %}
-    <li><a href="#" {% if p.0 in path %}class="selected"{% endif %}>{{ p.0 }}</a>
+    <li><a href="{{ p.0.get_absolute_url }}" {% if p.0 in path %}class="selected"{% endif %}>{{ p.0 }}</a>
         {% if p.1 == 1 %}<ul>{% endif %}
-
     </li>
 {% endfor %}
 </ul>

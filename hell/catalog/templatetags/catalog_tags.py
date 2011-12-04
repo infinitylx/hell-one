@@ -7,11 +7,13 @@ register = template.Library()
 
 @register.inclusion_tag('left-menu.html')
 def left_menu(current_category=None):
-    print "E V R I K A !"
+    #print "E V R I K A !"
+
     if current_category == None:
-        g = Category.objects.get(id=current_category) # get root
+        g = Category.objects.root_nodes()[0] # get root
     else:
         g = Category.objects.get(id=current_category)
+
     ipath = drilldown_tree_for_node(g)
     path = []
     others = {}
@@ -19,9 +21,9 @@ def left_menu(current_category=None):
     for p in ipath:
         path.append(p)
 
-    res = rec_call(path, path[0], 0)
+    res = rec_call(path, path[0])
 
-    return {'node':g, 'path':path, 'others':res[0]}
+    return {'node':g, 'path':path, 'others':res}
 
 def rec_call(path, parent):
     """ 0 close list

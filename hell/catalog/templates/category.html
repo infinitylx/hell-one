@@ -10,7 +10,8 @@
 {% endblock categorymenu %}
 
 {% block content %}
-{% for a in catalog.attachement.all %}
+<h2>List of files:</h2>
+{% for a in category.attachment.all %}
 <div class="attach">
     <a href="#">{{ a.name }}</a>
     {% if a.description %}<span>{{ a.description }}</span>{% endif %}

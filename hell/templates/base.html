@@ -34,6 +34,7 @@ body {
     /*background-color:rgb(178, 223, 245);*/
     clear:both;
     overflow:hidden;
+    border-radius:3px;
 }
 #navigation {
     width:200px;
@@ -84,6 +85,7 @@ body {
 #base {
     width:600px;
     float:left;
+    min-height:400px;
 }
 #base a {
     color:#F00;
@@ -95,6 +97,12 @@ body {
     border:1px solid #999;
     text-shadow:none;
     box-shadow:#cdf 0px 0px 10px;
+}
+#footer {
+    width:1000px;
+    text-align:center;
+    float:left;
+    margin:10px;
 }
 .error {
     border-top-right-radius: 3px;
@@ -119,11 +127,11 @@ body {
     <div id="main">
         <div id="head">
             <p><a href="#">Title</a></p>
-            <h2>Baseline</h2>
+            <h2>Description</h2>
             <div id="topmenu">
-                <div class="item"><a href="#" class="selected">item</a></div>
-                <div class="item"><a href="#">item</a></div>
-                <div class="item"><a href="#">item</a></div>
+                <div class="item"><a href="/" class="selected">Catalog</a></div>
+                <div class="item"><a href="#">Contacts</a></div>
+                <div class="item"><a href="http://blog.infinitylx.org.ua">Author</a></div>
             </div>
         </div>
         <div id="navigation">
@@ -136,7 +144,7 @@ body {
             {% endblock content %}
         </div>
         <div id="footer">
-            {% block footer %}2012&nbsp;(c)InfinitylX{% endblock %}
+            {% block footer %}2012&nbsp;&copy;InfinitylX{% endblock %}
         </div>
     </div>
 </body>
