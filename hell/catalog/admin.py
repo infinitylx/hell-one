@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from hell.catalog.models import Catalog, Category, Page, Attachment
+from hell.catalog.models import Category, Attachment
 from mptt.admin import MPTTModelAdmin
 
-admin.site.register(Catalog, MPTTModelAdmin)
-admin.site.register(Category)
-admin.site.register(Page)
+class CategoryAdmin(MPTTModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Attachment)

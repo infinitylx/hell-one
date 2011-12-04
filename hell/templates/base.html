@@ -32,11 +32,35 @@ body {
     margin:auto;
     background-color:#acF;
     /*background-color:rgb(178, 223, 245);*/
+    clear:both;
+    overflow:hidden;
 }
 #navigation {
     width:200px;
     margin:auto;
     float:left;
+}
+#navigation a {
+    display:inline;
+    /*float:left;*/
+    width:50px;
+    /*margin:10px;*/
+    color:#F00;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-shadow:none;
+    box-shadow:#cdf 0px 0px 10px;
+    background-color:#AF0;
+    border:1px solid #555;
+}
+#navigation li {
+    margin:10px 0 0 0;
+}
+#navigation .selected {
+    background-color:#CCC;
+    border:1px solid #666;
 }
 #topmenu .item {
     display:inline;

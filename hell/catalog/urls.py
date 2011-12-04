@@ -4,5 +4,6 @@ from django.conf import settings
 from hell.catalog.views import *
 
 urlpatterns = patterns('',
-    #url(r'^$', 'index', name='index'),
+    url(r'^$', 'index', name='index'),
+    url(r'^(?P<slug>\w+)/$', 'view_catalog', name='catalog'),
 )
