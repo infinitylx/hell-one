@@ -1,3 +1,5 @@
-This is simpe catalog.
+This is simple catalog of files.
+
+Primary purpose is to catalog files and show their previews.
 
 Created with django and django-mptt.
