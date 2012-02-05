@@ -20,9 +20,9 @@
 </div>
 
 <h2>List of files:</h2>
-{% for a in category.attachment.all %}
+{% for a in category.attachment_set.all %}
 <div class="attach">
-    <a href="#">{{ a.name }}</a>
+    <a href="{{ a.document.url }}">{{ a.name }}</a>
     {% if a.description %}<span>{{ a.description }}</span>{% endif %}
 </div>
 {% endfor %}
