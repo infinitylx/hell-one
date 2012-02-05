@@ -6,10 +6,19 @@
 {% block description %}{{ page.meta_description }}{% endblock description %}
 
 {% block categorymenu %}
-    {% left_menu %}
+    {% left_menu category.id %}
 {% endblock categorymenu %}
 
 {% block content %}
+<div class="breadcrumbs">
+	{% if path %}
+	{% for p in path %}
+	<a href="{{ p.get_absolute_url }}">{{ p }}→</a>
+	{% endfor %}
+	{% endif %}
+	<a href="{{ category.get_absolute_url }}">{{ category }}</a>
+</div>
+
 <h2>List of files:</h2>
 {% for a in category.attachment.all %}
 <div class="attach">
