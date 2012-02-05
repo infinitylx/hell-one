@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'south',
     'mptt',
     'catalog',
+    'sorl.thumbnail',
 )
 
 # A sample logging configuration. The only tangible logging

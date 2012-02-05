@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load catalog_tags %}
+{% load thumbnail %}
 
 {% block title %} {{ page.meta_title }}{% endblock title %}
 {% block keywords %}{{ page.meta_keywords }}{% endblock keywords %}
@@ -12,6 +13,9 @@
 {% block content %}
 {% for a in catalog.attachement.all %}
 <div class="attach">
+    {% thumbnail source geometry log=log as var %}
+    {% empty %}
+    {% endthumbnail %}
     <a href="#">{{ a.name }}</a>
     {% if a.description %}<span>{{ a.description }}</span>{% endif %}
 </div>
