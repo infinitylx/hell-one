@@ -8,19 +8,21 @@ from datetime import datetime
 import os
 # for custom smart-slug-field
 from south.modelsinspector import add_introspection_rules
-add_introspection_rules([], ["^smart_slug\.fields\.SmartSlugField"]) # add south rule for custom field
+add_introspection_rules([], ["^smart_slug\.fields\.SmartSlugField"])  # add south rule for custom field
 
 def upload_path_handler(instance, filename):
     """Upload files under 'category/subcategory/.../' """
     path = []
-    
-    for p in instance.category.get_ancestors(ascending=False): # getting all parents category
+
+    for p in instance.category.get_ancestors(ascending=False):  # getting all parents category
         path.append(p.slug)
-    
-    path = "/".join(path) # rendering it to string
-    ext = os.path.splitext(filename)[1] # getting extension from original file
-    file_name = "%Y-%m-%d_%H:%M" + ext # set filename as date plus original extension, prepare template
+
+    path.append(instance.category.slug)          # including self category
+    path = "/".join(path)+"/"                    # rendering it to string
+    ext = os.path.splitext(filename)[1]          # getting extension from original file
+    file_name = "%Y-%m-%d_%H:%M" + ext           # set filename as date plus original extension, prepare template
     path += datetime.today().strftime(file_name) # set actual date
+
     return "Catalog/{category}/".format(category=path)
 
 class Category(MPTTModel):
